@@ -4,6 +4,13 @@ public interface Command {
     void execute();
 }
 
+class NoCommand implements Command {
+    @Override
+    public void execute() {
+
+    }
+}
+
 class LightOnCommand implements Command {
     Light light;
 
@@ -40,5 +47,20 @@ class GarageDoorOpenCommand implements Command {
     @Override
     public void execute() {
         door.up();
+    }
+}
+
+class StereoOnWithCdCommand implements Command {
+    Stereo stereo;
+
+    public StereoOnWithCdCommand(Stereo stereo) {
+        this.stereo = stereo;
+    }
+
+    @Override
+    public void execute() {
+        stereo.on();
+        stereo.setCd();
+        stereo.setVolume(11);
     }
 }
