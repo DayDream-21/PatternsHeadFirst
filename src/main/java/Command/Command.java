@@ -2,11 +2,17 @@ package Command;
 
 public interface Command {
     void execute();
+    void undo();
 }
 
 class NoCommand implements Command {
     @Override
     public void execute() {
+
+    }
+
+    @Override
+    public void undo() {
 
     }
 }
@@ -22,6 +28,11 @@ class LightOnCommand implements Command {
     public void execute() {
         light.on();
     }
+
+    @Override
+    public void undo() {
+        light.off();
+    }
 }
 
 class LightOffCommand implements Command {
@@ -35,6 +46,11 @@ class LightOffCommand implements Command {
     public void execute() {
         light.off();
     }
+
+    @Override
+    public void undo() {
+        light.on();
+    }
 }
 
 class GarageDoorOpenCommand implements Command {
@@ -47,6 +63,11 @@ class GarageDoorOpenCommand implements Command {
     @Override
     public void execute() {
         door.up();
+    }
+
+    @Override
+    public void undo() {
+        door.down();
     }
 }
 
@@ -62,5 +83,10 @@ class StereoOnWithCdCommand implements Command {
         stereo.on();
         stereo.setCd();
         stereo.setVolume(11);
+    }
+
+    @Override
+    public void undo() {
+        stereo.on();
     }
 }
