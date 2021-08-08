@@ -90,3 +90,48 @@ class StereoOnWithCdCommand implements Command {
         stereo.on();
     }
 }
+
+class CellingFanHighCommand implements Command {
+    CellingFan cellingFan;
+    int prevSpeed;
+
+    public CellingFanHighCommand(CellingFan cellingFan) {
+        this.cellingFan = cellingFan;
+    }
+
+    @Override
+    public void execute() {
+        prevSpeed = cellingFan.getSpeed();
+        cellingFan.setHighSpeed();
+    }
+
+    @Override
+    public void undo() {
+        switch (prevSpeed) {
+            case CellingFan.HIGH -> cellingFan.setHighSpeed();
+            case CellingFan.MEDIUM -> cellingFan.setMediumSpeed();
+            case CellingFan.LOW -> cellingFan.setLowSpeed();
+            case CellingFan.OFF -> cellingFan.off();
+        }
+    }
+}
+
+class MacroCommand implements Command {
+    Command[] commands;
+
+    public MacroCommand(Command[] commands) {
+        this.commands = commands;
+    }
+
+    @Override
+    public void execute() {
+        for (int i = 0; i < commands.length; i++) {
+            commands[i].execute();
+        }
+    }
+
+    @Override
+    public void undo() {
+
+    }
+}

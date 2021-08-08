@@ -1,9 +1,9 @@
 package Command;
 
-public class Environment {
+public interface Environment {
 }
 
-class GarageDoor extends Environment {
+class GarageDoor implements Environment {
 
     public void up() {
         System.out.println("Door is moving up!");
@@ -32,23 +32,24 @@ class GarageDoor extends Environment {
     }
 }
 
-class Light extends Environment {
-    String place;
+class Light implements Environment {
+    String location;
+
     public Light(String place) {
-        this.place = place;
+        this.location = place;
     }
 
 
     public void on() {
-        System.out.println("Light is ON in " + place);
+        System.out.println("Light is ON in " + location);
     }
 
     public void off() {
-        System.out.println("Light is OFF in " + place);
+        System.out.println("Light is OFF in " + location);
     }
 }
 
-class Stereo extends Environment {
+class Stereo implements Environment {
     public void on() {
         System.out.println("Stereo is ON!");
     }
@@ -74,3 +75,36 @@ class Stereo extends Environment {
     }
 }
 
+class CellingFan implements Environment {
+    public static final int HIGH = 3;
+    public static final int MEDIUM = 2;
+    public static final int LOW = 1;
+    public static final int OFF = 0;
+    String location;
+    private int speed;
+
+    public CellingFan(String location) {
+        this.location = location;
+        speed = OFF;
+    }
+
+    public void setHighSpeed() {
+        speed = HIGH;
+    }
+
+    public void setMediumSpeed() {
+        speed = MEDIUM;
+    }
+
+    public void setLowSpeed() {
+        speed = LOW;
+    }
+
+    public void off() {
+        speed = OFF;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+}
