@@ -1,6 +1,4 @@
-package Factory.PizzaFactory;
-
-import java.util.Arrays;
+package Factory;
 
 public abstract class Pizza {
     String name;

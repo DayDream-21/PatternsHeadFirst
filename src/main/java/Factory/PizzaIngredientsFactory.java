@@ -1,4 +1,4 @@
-package Factory.PizzaFactory;
+package Factory;
 
 public interface PizzaIngredientsFactory {
     /*public Dough createDough();
