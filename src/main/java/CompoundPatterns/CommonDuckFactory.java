@@ -1,6 +1,6 @@
 package CompoundPatterns;
 
-public class DuckFactory extends AbstractDuckFactory {
+public class CommonDuckFactory extends AbstractDuckFactory {
     @Override
     public Quackable createMallardDuck() {
         return new MallardDuck();
@@ -19,5 +19,10 @@ public class DuckFactory extends AbstractDuckFactory {
     @Override
     public Quackable createRubberDuck() {
         return new RubberDuck();
+    }
+
+    @Override
+    public Quackable createGooseDuck() {
+        return new GooseAdapter(new Goose());
     }
 }

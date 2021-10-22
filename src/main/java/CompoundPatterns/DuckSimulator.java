@@ -3,7 +3,7 @@ package CompoundPatterns;
 public class DuckSimulator {
     public static void main(String[] args) {
         DuckSimulator simulator = new DuckSimulator();
-        AbstractDuckFactory commonDuckFactory = new DuckFactory();
+        AbstractDuckFactory commonDuckFactory = new CommonDuckFactory();
         AbstractDuckFactory countingDuckFactory = new CountingDuckFactory();
 
         simulator.simulate(countingDuckFactory);
@@ -14,15 +14,14 @@ public class DuckSimulator {
         Quackable redheadDuck = duckFactory.createRedheadDuck();
         Quackable duckCall = duckFactory.createDuckCall();
         Quackable rubberDuck = duckFactory.createRubberDuck();
-
-        Quackable gooseAdapter = new GooseAdapter(new Goose());
+        Quackable gooseDuck = duckFactory.createGooseDuck();
 
         System.out.println("\nDuck Simulator: With Decorator");
         simulate(mallardDuck);
         simulate(redheadDuck);
         simulate(duckCall);
         simulate(rubberDuck);
-        simulate(gooseAdapter);
+        simulate(gooseDuck);
 
         System.out.println("The ducks quacked " +
                  QuackCounter.getNumberOfQuacks() + " times");
