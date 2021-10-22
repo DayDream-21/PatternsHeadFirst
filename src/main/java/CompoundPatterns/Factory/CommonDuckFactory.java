@@ -1,6 +1,12 @@
-package CompoundPatterns;
+package CompoundPatterns.Factory;
 
-public class DuckFactory extends AbstractDuckFactory {
+import CompoundPatterns.Ducks.DuckCall;
+import CompoundPatterns.Ducks.MallardDuck;
+import CompoundPatterns.Ducks.RedheadDuck;
+import CompoundPatterns.Ducks.RubberDuck;
+import CompoundPatterns.Ducks.Quackable;
+
+public class CommonDuckFactory extends AbstractDuckFactory {
     @Override
     public Quackable createMallardDuck() {
         return new MallardDuck();

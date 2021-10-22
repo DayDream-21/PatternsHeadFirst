@@ -1,4 +1,11 @@
-package CompoundPatterns;
+package CompoundPatterns.Factory;
+
+import CompoundPatterns.Decorator.QuackCounter;
+import CompoundPatterns.Ducks.DuckCall;
+import CompoundPatterns.Ducks.MallardDuck;
+import CompoundPatterns.Ducks.RedheadDuck;
+import CompoundPatterns.Ducks.RubberDuck;
+import CompoundPatterns.Ducks.Quackable;
 
 public class CountingDuckFactory extends AbstractDuckFactory {
     @Override
